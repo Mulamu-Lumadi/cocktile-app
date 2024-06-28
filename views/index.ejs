@@ -1,0 +1,16 @@
+<%- include ('partials/header.ejs') %>
+<form action="/submit" method="post">
+    <button type="submit" class="btn btn-dark btn-lg px-3 py-3 text-change">Get random cocktile</button>
+</form>
+<% if (locals.content) { %>
+    <h1 class="text-change"><%= content.drinks[0].strDrink %></h1>
+    <img src="<%= content.drinks[0].strDrinkThumb %>" alt="cocktile" class="img-fluid mb-3">
+    <% for (let i = 1; i <= 15; i++) { %>
+        <% if (content.drinks[0]['strIngredient' + i]) { %>
+            <h2 class="text-change"><%= content.drinks[0]['strIngredient' + i] %></h2>
+        <% } %>
+    <% } %>
+<% } else { %>
+    <h1 class="text-change">No drinks to show yet</h1>
+<% } %>
+<%- include ('partials/footer.ejs') %>
